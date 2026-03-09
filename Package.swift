@@ -16,13 +16,19 @@ let package = Package(
         .target(
             name: "MSCellAccessory",
             path: "MSCellAccessory",
-            publicHeadersPath: ".",
             sources: [
                 "MSCellAccessory.m",
                 "UIView+AccessViewController.m"
             ],
+            publicHeadersPath: ".",
             cSettings: [
-                .headerSearchPath(".")
+                .headerSearchPath("."),
+                .define("SWIFT_PACKAGE"),
+                .unsafeFlags([
+                    "-fmodules",
+                     "-fcxx-modules",
+                     "-F", "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks"
+                     ])
             ]
         )
     ]
